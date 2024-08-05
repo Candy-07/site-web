@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serveur Marvel FR</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #2c2f33;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f11010;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        .description, .owner, .team, .counter {
+            margin: 20px 0;
+        }
+        .join {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .join-button {
+            background-color: #7289da;
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        .join-button:hover {
+            background-color: #5b6eae;
+        }
+        .server-image {
+            width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .counter {
+            font-size: 48px;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 70%;
+            margin: auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .slides {
+            display: none;
+        }
+        .slides img {
+            width: 80%;
+            border-radius: 10px;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur notre site !</h1>
+    </header>
+    <main>
+        <section class="description">
+            <h2>Présentation du Serveur</h2>
+            <p>Rejoignez la communauté des fans de Marvel, que ce soit du MCU ou des Comics ! Sur ce serveur, vous pourrez :</p>
+            <p>Échanger vos impressions, vos théories, vos spoilers, vos photos sur l’univers Marvel</p>
+            <p>Choisir votre personnage préféré du MCU et obtenir un rôle personnalisé</p>
+            <p>Sélectionner votre camp et devenir un super-héros ou un super-vilain</p>
+            <p>Recevoir des notifications selon vos rôles (pas de ping everyone)</p>
+            <p>Notre Partenariats ouvert !</p>
+            <p>Promouvoir votre serveur dans un salon publicité</p>
+            <p>L'équipe de Staff vous attend !</p>
+        </section>
+        <section class="join">
+            <div class="slideshow-container">
+                <div class="slides active">
+                    <img src="role perso.png" alt="Image 1">
+                </div>
+                <div class="slides">
+                    <img src="role.png" alt="Image 2">
+                </div>
+                <div class="slides">
+                    <img src="salon films.png" alt="Image 3">
+                </div>
+                <div class="slides">
+                    <img src="liste.png" alt="Image 4">
+                </div>
+            </div>
+            <button class="join-button" onclick="window.open('https://discord.gg/WzMHTrZjmA', '_blank')">Rejoindre le Serveur</button>
+        </section>
+        <section class="counter">
+            <h2>Nous sommes plus de :</h2>
+            <div id="memberCount">0</div>
+        </section>
+        <section class="owner">
+            <h2>À propos du Propriétaire</h2>
+            <p>Bonjour, je suis Professeur Candy, le créateur de ce serveur. Merci de nous rejoindre et de faire partie de notre communauté.</p>
+            <p>Cela fait plus de 2 ans que nous avons ouvert cette communauté, j'espère que ça va vous plaire.</p>
+            <p>Et merci pour tout vos soutiens</p>
+        </section>
+        <section class="team">
+            <h2>Remerciements à l'Équipe</h2>
+            <p>Un grand merci à notre équipe dévouée pour leur travail acharné et leur soutien continu.</p>
+        </section>
+    </main>
+    <script>
+        // Simule le nombre de membres
+        let count = 0;
+        const countTarget = 800; // Remplace par le nombre actuel de membres
+        const countElement = document.getElementById('memberCount');
+
+        function updateCount() {
+            if (count < countTarget) {
+                count++;
+                countElement.textContent = count;
+                requestAnimationFrame(updateCount);
+            }
+        }
+
+        requestAnimationFrame(updateCount);
+
+        // Diaporama
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slides');
+
+        function showSlides() {
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].classList.add('active');
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+
+        showSlides();
+    </script>
+</body>
+</html>
